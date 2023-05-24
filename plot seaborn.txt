@@ -1,0 +1,20 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+pstore = pd.read_csv("C:/Users/Windows 10/Desktop/Dsbda Lab/Data set/dataset_Facebook.csv")
+pstore.head(10)
+#Create a distribution plot for rating
+sns.distplot(pstore.like)
+
+
+#Adding dark background to the graph
+plt.style.use("dark_background")
+#Change the number of bins
+sns.distplot(pstore.like, bins=20, kde = False, color='red')
+
+
+#Plotting the scatter plot
+#plt.scatter(pstore.share, pstore.like)
+# Plotting the same thing now using a jointplot
+sns.pairplot(pstore[['like', 'share', 'comment','Total Interactions']])
+plt.show()

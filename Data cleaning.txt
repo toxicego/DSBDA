@@ -1,0 +1,62 @@
+Pip install nltk
+
+
+# Data cleaning 1
+punctuations = '''!()-{}[];:"'\,<>./?@#$%^&*_~`'''
+my_str = "Hello!!!, he said ...and went."
+no_punct = ""
+for char in my_str:
+    if(char not in punctuations):
+        no_punct = no_punct + char
+print(no_punct)
+
+
+# Data cleaning 2
+import re
+s = "Hello!!!, he said ...and went."
+s = re.sub(r'[^\w\s]','',s)
+# not of word and space character
+print(s)
+
+
+# Tokanization
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import sent_tokenize, word_tokenize
+example_text = "Hello Mr. Pravin, how are you doing today? The weather in lonavala is"
+"rainy. The sky is full of cloud."
+print(sent_tokenize(example_text))
+print(word_tokenize(example_text))
+
+
+# Stopwords
+import nltk
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+stop_words = stopwords.words('english')
+print(stop_words)
+
+
+# Steming
+import nltk
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
+stemmer = PorterStemmer()
+input_str = "There are several types of stemming algorithms."
+input_str = nltk.word_tokenize(input_str)
+print (input_str)
+for word in input_str:
+    print(stemmer.stem(word))
+
+
+# Lamitization
+import nltk
+nltk.download('wordnet')
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+lemmatizer = WordNetLemmatizer()
+input_str = "There are several cities with mice."
+input_str = nltk.word_tokenize(input_str)
+print (input_str)
+for word in input_str:
+    print(lemmatizer.lemmatize(word))

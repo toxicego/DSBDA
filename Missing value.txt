@@ -1,0 +1,41 @@
+missing value
+
+import pandas as pd
+import numpy as np
+#importing the dataset
+df = pd.read_csv("C:/Users/Windows 10/Desktop/Dsbda Lab/Data set/records.csv")
+df.head()
+print(df)
+#Missing values are usually represented in the form of Nan or null or None in the
+#dataset
+df.info()
+
+#1. Deleting the column with missing data
+updated_df = df.dropna(axis=1)
+print(updated_df)
+updated_df.info()
+
+#2. Deleting the row with missing data
+updated_df = df.dropna(axis=0)
+print(updated_df)
+updated_df.info()
+
+
+#3. Filling the Missing Values – Imputation
+updated_df = df
+updated_df['Salary']=updated_df['Salary'].fillna(updated_df['Salary'].mean())
+print(updated_df)
+
+
+#4. Imputation with an additional column
+updated_df = df
+updated_df['Salaryismissing'] = updated_df['Salary'].isnull()
+print(updated_df)
+
+
+#5. Filling with a Regression Model
+testdf = df[df['Salary'].isnull()==True]
+traindf = df[df['Salary'].isnull()==False]
+traindf.drop("Salary",axis=1,inplace=True)
+testdf.drop("Salary",axis=1,inplace=True)
+print(traindf)
