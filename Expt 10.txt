@@ -1,0 +1,42 @@
+terminal command
+
+[cloudera@quickstart ~]$ hostname
+[cloudera@quickstart ~]$ hdfs dfs -ls
+[cloudera@quickstart ~]$ sudo /home/cloudera/cloudera-manager --express --force
+
+Add table:
+
+[cloudera@quickstart ~]$ cat > /home/cloudera/employee.txt
+1~Pravin~Lonavala~Professor~100000~DSBDA
+2~Pallavi~Pune~Professor~125000~WAD
+3~Anuradha~Pune~Professor~100000~PA
+4~Pankaj~Pune~Professor~90000~CNS
+^Z
+[cloudera@quickstart ~]$ cat /home/cloudera/employee.txt
+[cloudera@quickstart ~]$ hdfs dfs -ls
+[cloudera@quickstart ~]$ hdfs dfs -ls /
+[cloudera@quickstart ~]$ cat /home/cloudera/employee.txt
+[cloudera@quickstart ~]$ hdfs dfs -put employee.txt
+[cloudera@quickstart ~]$ hdfs dfs –ls /user/cloudera
+
+
+Hive commands to create and load table:
+
+hive> create table employee(id int, name string, city string, post string, salary int, subject string, domain string)
+    > row format delimited fields terminated by '~';
+hive> show tables;
+hive> load data inpath '/user/cloudera/employee.txt' overwrite into table employee;
+hive> select * from employee;
+
+
+Hive commands to create and load table:
+
+hive> desc employee;  //describe
+hive> select name, city from employee;
+hive> alter table employee rename to details;
+hive> show tables;
+hive> select * from details;
+hive> alter table details add columns (dept string);
+hive> select * from details;
+
+hive> ^Z to exit

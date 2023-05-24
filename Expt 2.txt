@@ -1,0 +1,29 @@
+#Sorting
+# importing pandas package
+import pandas as pd
+# assign dataset
+csvData = pd.read_csv("records.csv")
+# displaying unsorted data frame
+print("\nBefore sorting:")
+print(csvData)
+# sort data frame
+#csvData.sort_values(["Salary"], axis=0, ascending=[False], inplace=True)
+csvData.sort_values(["Salary"],axis=0, ascending=[True], inplace=True)
+# displaying sorted data frame
+print("\nAfter sorting:")
+print(csvData)
+
+#Transpose
+import pandas as pd
+df = pd.read_csv('records.csv')
+print(df)
+print(df.T)
+print(df.shape)
+print(df.size)
+
+#Shape
+import pandas as pd
+df = pd.read_csv('records.csv')
+print(df)
+print(df.shape)
+print(df.size)
